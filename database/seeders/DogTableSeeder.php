@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Dog;
+use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -16,8 +18,7 @@ class DogTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('dogs')->insert([
-            'name' => Str::random(10)
-        ]);
+        Dog::truncate();
+        Dog::factory()->count(20)->create();
     }
 }
