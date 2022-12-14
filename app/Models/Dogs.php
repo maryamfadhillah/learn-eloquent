@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,5 +16,14 @@ class Dogs extends Model
 
     public function scopeAgeGreaterThan($query, $age) {
         return $query->where('age', '>', $age);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('age', function (Builder $builder) {
+            $builder->where('age', '>', 8);
+        });
     }
 }
