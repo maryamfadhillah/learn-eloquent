@@ -11,6 +11,12 @@ class Dogs extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     * 
+     */
+    protected $fillable = ['name', 'age'];
+
     public function dogsRequiringAntiRabbitBiteShot() {
         return $this->AgeGreaterThan(6);
     }
