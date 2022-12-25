@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Cat;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,17 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('cats', function(){
+Route::get('hamster', function(){
 
-    \App\Models\Cat::create(
-        ['info' => json_encode(['nama' => 'Fluffy', 'long-hair' => true])]
+    \App\Models\Hamster::create(
+        [
+            'user_id'   => User::find(2)->id,
+            'name'      => 'Pico'
+        ]
     );
 
-    \App\Models\Cat::create(
-        ['info' => json_encode(['nama' => 'Furball', 'long-hair' => false])]
-    );
-
-    \App\Models\Cat::create(
-        ['info' => json_encode(['nama' => 'Igor', 'long-hair' => true])]
-    );
 });
